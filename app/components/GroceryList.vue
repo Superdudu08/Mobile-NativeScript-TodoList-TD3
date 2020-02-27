@@ -1,7 +1,7 @@
 <template>
-    <ListView for="item in items" @itemTap="onItemTap">
+    <ListView for="item in items">
         <v-template>
-        <GroceryItem :groceryItem="item" @toggleDone="onToggleDone"></GroceryItem>
+            <GroceryItem :groceryItem="item" @doneTap="onToggleDone" @nameTap="onItemTap"></GroceryItem>
         </v-template>
     </ListView>
 </template>
@@ -15,7 +15,6 @@
     props: ['items'],
     methods: {
         onToggleDone(groceryItem) {
-            // groceryItem.done = !groceryItem.done;
             const newItem = Object.assign(groceryItem, { done: !groceryItem.done});
 
             const idx = this.items.findIndex(i => i.id === groceryItem.id);
@@ -25,7 +24,7 @@
         onItemTap(args) {
             this.$navigateTo(Detail, {
                 props: {
-                    groceryItem: args.item
+                    groceryItem: args
                 }
             });
         }

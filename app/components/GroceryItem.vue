@@ -1,7 +1,7 @@
 <template>
     <GridLayout columns="200, *">
-        <Label col="0" :text="statusText"></Label>
-        <Label col="1" class="item-name" :class="{ 'line-through' : groceryItem.done }" :text="groceryItem.name"></Label>
+        <Label col="0" :text="statusText" @tap="onDoneTap"></Label>
+        <Label col="1" class="item-name" :class="{ 'line-through' : groceryItem.done }" :text="groceryItem.name" @tap="onNameTap"></Label>
     </GridLayout>
 </template>
 
@@ -20,8 +20,13 @@ export default {
     },
     methods: {
         toggle: function() {
-           // this.status = this.status === 0 ? 1 : 0;
            this.$emit('toggleDone', this.groceryItem);
+        },
+        onDoneTap: function() {
+            this.$emit('doneTap', this.groceryItem);
+        },
+        onNameTap: function() {
+            this.$emit('nameTap', this.groceryItem);
         }
     }
 }

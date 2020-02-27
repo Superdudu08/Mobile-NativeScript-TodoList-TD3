@@ -1,7 +1,7 @@
 <template>
-    <ListView for="item in items">
+    <ListView for="item in filteredItems">
         <v-template>
-            <GroceryItem :groceryItem="item" @doneTap="onToggleDone" @nameTap="onItemTap"></GroceryItem>
+            <GroceryItem :groceryItem="item" @doneTap="onToggleDone" @nameTap="onItemTap" @deleteTap="onDeleteTap"></GroceryItem>
         </v-template>
     </ListView>
 </template>
@@ -12,7 +12,7 @@
 
   export default {
     components: {GroceryItem, Detail},
-    props: ['items'],
+    props: ['items','filterDone'],
     methods: {
         onToggleDone(groceryItem) {
             const newItem = Object.assign(groceryItem, { done: !groceryItem.done});
@@ -25,10 +25,25 @@
             this.$navigateTo(Detail, {
                 props: {
                     groceryItem: args
+                },
+                transitionAndroid: {
+                    name:"slide",
+                    duration: 300,
+                    curve: "easeInOut"
                 }
             });
+        },
+        onDeleteTap(groceryItem) {
+            groceryItem.deleted=true;
+        }
+    },
+    computed: {
+        filteredItems: function() {
+            if (this.filterDone){
+                return this.items.filter((item) => !item.done && !item.deleted);
+            }
+            return this.items.filter((item) => !item.deleted);
         }
     }
   }
 </script>
-

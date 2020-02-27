@@ -1,7 +1,8 @@
 <template>
-    <GridLayout columns="200, *">
+    <GridLayout columns="140,*,40" rows="60">
         <Label col="0" :text="statusText" @tap="onDoneTap"></Label>
         <Label col="1" class="item-name" :class="{ 'line-through' : groceryItem.done }" :text="groceryItem.name" @tap="onNameTap"></Label>
+        <Label col="2" @tap="onDeleteTap" text="🗑️"></Label> 
     </GridLayout>
 </template>
 
@@ -27,6 +28,9 @@ export default {
         },
         onNameTap: function() {
             this.$emit('nameTap', this.groceryItem);
+        },
+        onDeleteTap: function() {
+            this.$emit('deleteTap', this.groceryItem);
         }
     }
 }
@@ -35,16 +39,18 @@ export default {
 <style lang="scss" scoped>
 page {
     label {
-        color:red;
+        color:black;
     }
     .line-through {
         text-decoration: line-through;
     }
 }
-</style>
-
-<style>
 label {
-    background-color: aqua;
+    background-color: rgb(206, 188, 188);
 }
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+  }
 </style>

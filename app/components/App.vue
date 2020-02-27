@@ -2,9 +2,10 @@
     <Page>
       <ActionBar title="Groceries">
         <ActionItem text="Add" @tap="onAddTap"></ActionItem>
+        <ActionItem text="Filter" @tap="toggleFilter"></ActionItem>
       </ActionBar>
       <StackLayout>
-        <GroceryList :items="items"/>
+        <GroceryList :items="items" :filterDone="filterDone"/>
       </StackLayout>
     </Page>
 </template>
@@ -18,7 +19,8 @@
     components: {GroceryList},
     data() {
       return {
-        items: groceryData.groceryItems
+        items: groceryData.groceryItems,
+        filterDone: false
       }
     },
     methods: {
@@ -33,6 +35,9 @@
             this.items.push(newItem);
           }
         })
+      },
+      toggleFilter() {
+        this.filterDone = !this.filterDone;
       }
     }
   }
@@ -40,6 +45,6 @@
 
 <style scoped>
   ActionBar {
-    background-color: red;
+    background-color: rgb(228, 201, 201);
   }
 </style>

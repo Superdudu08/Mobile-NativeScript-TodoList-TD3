@@ -1,8 +1,10 @@
 <template>
     <Page>
+        <ActionBar title="Details">
+        </ActionBar>
         <StackLayout>
-            <Button text="Go back" @tap="onBackTap"></Button>
             <Label :text="groceryItem.name"></Label>
+            <Button text="Back" @tap="onBackTap"></Button>
             <Button :text="statusText" @tap='toggle'></Button>
             <Button text="Delete" v-if="groceryItem.done" @tap="onDeleteTap"></Button>
         </StackLayout>
@@ -44,3 +46,17 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+    Button {
+        background-color: rgb(170, 170, 170);
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+
+    Label {
+        padding: 30px;
+        font-size:20px;
+        text-align: center;
+    }
+</style>

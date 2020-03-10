@@ -1,11 +1,11 @@
 <template>
     <Page>
-      <ActionBar title="Groceries">
+      <ActionBar title="TODO LIST">
         <ActionItem text="Add" @tap="onAddTap"></ActionItem>
         <ActionItem text="Filter" @tap="toggleFilter"></ActionItem>
       </ActionBar>
       <StackLayout>
-        <GroceryList :items="items" :filterDone="filterDone" @deletedItem="saveToLocalStorage"/>
+        <GroceryList :items="items" :filterDone="filterDone" @updateItems="saveToLocalStorage"/>
       </StackLayout>
     </Page>
 </template>
@@ -35,6 +35,7 @@
         }).then( newItem => {
           if(newItem) {
             this.items.unshift(newItem);
+            this.saveToLocalStorage();
           }
         })
       },

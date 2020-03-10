@@ -35,13 +35,17 @@
             });
         },
         onDeleteTap(groceryItem) {
-            groceryItem.deleted=true;
-            this.$emit('deletedItem');
+            if(groceryItem.done){
+                groceryItem.deleted=true;
+                this.$emit('updateItems');
+            }
         }
     },
     computed: {
         filteredItems: function() {
+            this.$emit('updateItems');
             if (this.filterDone){
+                
                 return this.items.filter((item) => !item.done && !item.deleted);
             }
             return this.items.filter((item) => !item.deleted);

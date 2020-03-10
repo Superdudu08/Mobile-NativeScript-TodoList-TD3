@@ -1,8 +1,8 @@
 <template>
     <Page>
         <StackLayout>
-            <Label text="Add new item"></Label>
-            <TextField v-model="name" hint="Enter grocery name"></TextField>
+            <Label text="Add new task"></Label>
+            <TextField v-model="name" hint="Enter task title"></TextField>
             <Button text="Save" @tap="onSaveTap"></Button>
         </StackLayout>
     </Page>
@@ -30,3 +30,19 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+
+StackLayout {
+    width:80%;
+}
+label {
+    text-align:center;
+    padding:20px;
+}
+
+button {
+    background-color:rgb(170, 170, 170);
+    border-radius:5%;
+}
+</style>

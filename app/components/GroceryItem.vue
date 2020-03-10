@@ -2,7 +2,7 @@
     <GridLayout columns="140,*,40" rows="60">
         <Label col="0" :text="statusText" @tap="onDoneTap" class="statusDone" :class="{ 'toDoDone' : groceryItem.done }"></Label>
         <Label col="1" class="item-name" :class="{ 'line-through' : groceryItem.done }" :text="groceryItem.name" @tap="onNameTap"></Label>
-        <Label col="2" @tap="onDeleteTap" text="🗑️"></Label> 
+        <Label col="2" @tap="onDeleteTap" text="🗑️" class="deleteButton"></Label> 
     </GridLayout>
 </template>
 
@@ -63,5 +63,12 @@ label {
 }
 .item-name {
     padding-left: 10px;
+    text-align:center;
+}
+
+.deleteButton {
+    background-color: rgba(7, 6, 6, 0.609);
+    text-align: center;
+    border-radius:100%;
 }
 </style>

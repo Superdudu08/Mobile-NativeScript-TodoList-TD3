@@ -17,6 +17,7 @@
   "dependencies": {
     "@nativescript/theme": "^2.2.1",
     "@vue/devtools": "^5.0.0-beta.3",
+    "nativescript-localstorage": "^2.0.1",
     "nativescript-socket.io": "^0.11.1",
     "nativescript-toast": "^2.0.0",
     "nativescript-vue": "^2.4.0",

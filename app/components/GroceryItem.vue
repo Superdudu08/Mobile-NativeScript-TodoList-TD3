@@ -1,6 +1,6 @@
 <template>
     <GridLayout columns="140,*,40" rows="60">
-        <Label col="0" :text="statusText" @tap="onDoneTap"></Label>
+        <Label col="0" :text="statusText" @tap="onDoneTap" class="statusDone" :class="{ 'toDoDone' : groceryItem.done }"></Label>
         <Label col="1" class="item-name" :class="{ 'line-through' : groceryItem.done }" :text="groceryItem.name" @tap="onNameTap"></Label>
         <Label col="2" @tap="onDeleteTap" text="🗑️"></Label> 
     </GridLayout>
@@ -16,7 +16,7 @@ export default {
     },
     computed: {
         statusText: function() {
-            return this.groceryItem.done ? 'Done' : 'Not done';
+            return this.groceryItem.done ? 'DONE' : 'TO DO';
         }
     },
     methods: {
@@ -37,6 +37,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 page {
     label {
         color:black;
@@ -44,13 +45,23 @@ page {
     .line-through {
         text-decoration: line-through;
     }
+    
 }
 label {
-    background-color: rgb(206, 188, 188);
+    vertical-align: center;
+}
+.statusDone {
+    text-align:center;
+    border-radius:5%;
+    margin-left:10px;
+    background-color:rgba(180, 110, 110, 0.829);
+    padding:2%;
 }
 
-.fas {
-    font-family: "Font Awesome 5 Free", "fa-solid-900";
-    font-weight: 900;
-  }
+.toDoDone {
+    background-color: rgb(120, 197, 110)
+}
+.item-name {
+    padding-left: 10px;
+}
 </style>

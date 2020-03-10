@@ -9,6 +9,7 @@
 <script > 
     import GroceryItem from "./GroceryItem";
     import Detail from './Detail';
+    
 
   export default {
     components: {GroceryItem, Detail},
@@ -35,6 +36,7 @@
         },
         onDeleteTap(groceryItem) {
             groceryItem.deleted=true;
+            this.$emit('deletedItem');
         }
     },
     computed: {
@@ -47,3 +49,7 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+    
+</style>

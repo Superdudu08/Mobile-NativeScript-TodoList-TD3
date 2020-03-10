@@ -5,7 +5,7 @@
         <ActionItem text="Filter" @tap="toggleFilter"></ActionItem>
       </ActionBar>
       <StackLayout>
-        <GroceryList :items="items" :filterDone="filterDone"/>
+        <GroceryList :items="items" :filterDone="filterDone" @deletedItem="saveToLocalStorage"/>
       </StackLayout>
     </Page>
 </template>
@@ -14,6 +14,8 @@
   import GroceryList from "./GroceryList";
   import groceryData from '../grocery-data.json';
   import AddItem from './AddItem';
+  import * as localstorage from 'nativescript-localstorage';
+
 
   export default {
     components: {GroceryList},
@@ -32,13 +34,21 @@
           }
         }).then( newItem => {
           if(newItem) {
-            this.items.push(newItem);
+            this.items.unshift(newItem);
           }
         })
       },
       toggleFilter() {
         this.filterDone = !this.filterDone;
+      },
+      saveToLocalStorage() {
+          localStorage.setItem("data", JSON.stringify(this.items));
       }
+    },
+    created: function() {
+        if (localStorage.getItem("data") !== null) {
+            this.items = JSON.parse(localStorage.getItem("data"));
+        }
     }
   }
 </script>
@@ -46,5 +56,6 @@
 <style scoped>
   ActionBar {
     background-color: rgb(228, 201, 201);
+    color:black;
   }
 </style>

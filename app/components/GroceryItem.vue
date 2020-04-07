@@ -1,8 +1,8 @@
 <template>
-    <GridLayout columns="140,*,40" rows="60">
+    <GridLayout columns="100,*,40" rows="60">
         <Label col="0" :text="statusText" @tap="onDoneTap" class="statusDone" :class="{ 'toDoDone' : groceryItem.done }"></Label>
         <Label col="1" class="item-name" :class="{ 'line-through' : groceryItem.done }" :text="groceryItem.name" @tap="onNameTap"></Label>
-        <Label col="2" @tap="onDeleteTap" text="🗑️" class="deleteButton"></Label> 
+        <Label col="2" v-if='groceryItem.done' @tap="onDeleteTap" text="🗑️" class="deleteButton"></Label> 
     </GridLayout>
 </template>
 
@@ -44,6 +44,7 @@ page {
     }
     .line-through {
         text-decoration: line-through;
+        color:rgb(170,170,170);
     }
     
 }

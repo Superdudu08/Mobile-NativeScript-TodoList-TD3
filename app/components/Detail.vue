@@ -49,14 +49,23 @@ export default {
 
 <style lang="scss" scoped>
     Button {
-        background-color: rgb(170, 170, 170);
+        background-color: rgb(228, 201, 201);
         margin-top:10px;
         margin-bottom:10px;
+        width:60%;
+        height:120px;
+        font-size:14px;
+        border-radius:5%;
     }
 
     Label {
         padding: 30px;
         font-size:20px;
         text-align: center;
+    }
+
+    ActionBar {
+        background-color: rgb(228, 201, 201);
+        color:black;
     }
 </style>

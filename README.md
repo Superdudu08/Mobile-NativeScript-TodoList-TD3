@@ -1,23 +1,5 @@
-# NativeScript-Vue Application
+# TODO List -  TD3 : Version avec Local Storage - Maxence Duroy
 
-> A native application built with NativeScript-Vue
+`tns run` pour lancer l\'application
 
-## Usage
-
-``` bash
-# Install dependencies
-npm install
-
-# Preview on device
-tns preview
-
-# Build, watch for changes and run the application
-tns run
-
-# Build, watch for changes and debug the application
-tns debug <platform>
-
-# Build for production
-tns build <platform> --env.production
-
-```
+`tns resources generate icons  app/assets/images/appicon.png` pour générer l'icone

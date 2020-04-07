@@ -1,8 +1,8 @@
 <template>
     <Page>
-      <ActionBar title="TODO LIST">
-        <ActionItem text="Add" @tap="onAddTap"></ActionItem>
-        <ActionItem text="Filter" @tap="toggleFilter"></ActionItem>
+      <ActionBar title="TO DO LIST">
+        <ActionItem text="ADD" @tap="onAddTap"></ActionItem>
+        <ActionItem :text="filterButtonText"  @tap="toggleFilter"></ActionItem>
       </ActionBar>
       <StackLayout>
         <GroceryList :items="items" :filterDone="filterDone" @updateItems="saveToLocalStorage"/>
@@ -12,7 +12,6 @@
 
 <script > 
   import GroceryList from "./GroceryList";
-  import groceryData from '../grocery-data.json';
   import AddItem from './AddItem';
   import * as localstorage from 'nativescript-localstorage';
 
@@ -21,7 +20,7 @@
     components: {GroceryList},
     data() {
       return {
-        items: groceryData.groceryItems,
+        items: [],
         filterDone: false
       }
     },
@@ -50,6 +49,12 @@
         if (localStorage.getItem("data") !== null) {
             this.items = JSON.parse(localStorage.getItem("data"));
         }
+    },
+    computed: {
+      filterButtonText: function() {
+        if(this.filterDone){ return "SHOW ALL TASKS" }
+        else{ return "ONLY NOT DONE" }
+      }
     }
   }
 </script>

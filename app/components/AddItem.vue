@@ -18,23 +18,26 @@ export default {
     },
     methods: {
         onSaveTap: function() {
-            const newItem = {
-                id: this.id,
-                name: this.name,
-                done: false,
-                deleted: false
-            };
-            this.$modal.close(newItem);
+            if(this.name !== "") {
+                const newItem = {
+                    id: this.id,
+                    name: this.name,
+                    done: false,
+                    deleted: false
+                };
+                this.$modal.close(newItem);
+            }
+            
         }
     }
-
 }
 </script>
 
 <style lang="scss" scoped>
 
 StackLayout {
-    width:80%;
+    width:100%;
+    padding:30px;
 }
 label {
     text-align:center;
@@ -42,7 +45,7 @@ label {
 }
 
 button {
-    background-color:rgb(170, 170, 170);
+    background-color: rgb(228, 201, 201);
     border-radius:5%;
 }
 </style>

@@ -13,7 +13,7 @@ export default {
     props: ['id'],
     data: function() {
         return {
-           name: ''
+            name: ''
         }
     },
     methods: {
@@ -27,3 +27,21 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+
+StackLayout {
+    width:100%;
+    padding:30px;
+}
+label {
+    text-align:center;
+    padding:20px;
+}
+
+button {
+    background-color: rgb(228, 201, 201);
+    border-radius:5%;
+    margin-bottom:30px;
+}
+</style>

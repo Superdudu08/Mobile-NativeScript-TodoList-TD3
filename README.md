@@ -2,7 +2,7 @@
 
 ## Lancer l'application
 
-* `npm install` pour installer les dépences
+* `npm install` pour installer les dépendances
 * `tns run` pour lancer l\'application
 
 

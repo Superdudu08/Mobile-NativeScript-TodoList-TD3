@@ -5,7 +5,8 @@
 * `npm install` pour installer les dépendances
 * `tns run` pour lancer l\'application
 
+## Commentaires
 
-`tns resources generate icons  app/assets/images/appicon.png`  a été utilisé pour générer l'icone
+* `tns resources generate icons  app/assets/images/appicon.png`  a été utilisé pour générer l'icone
 
-`tns resources generate splashes  app/assets/images/todoSplashes.png` a été utilisé pour générer le splash screen
+* `tns resources generate splashes  app/assets/images/todoSplashes.png` a été utilisé pour générer le splash screen

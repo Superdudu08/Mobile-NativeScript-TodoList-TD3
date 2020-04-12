@@ -3,10 +3,10 @@
         <ActionBar title="Details">
         </ActionBar>
         <StackLayout>
-            <Label :text="groceryItem.name"></Label>
+            <Label :text="todoItem.name"></Label>
             <Button text="Back" @tap="onBackTap"></Button>
             <Button :text="statusText" @tap='toggle'></Button>
-            <Button text="Delete" v-if="groceryItem.done" @tap="onDeleteTap"></Button>
+            <Button text="Delete" v-if="todoItem.done" @tap="onDeleteTap"></Button>
         </StackLayout>
     </Page>
 </template>
@@ -16,7 +16,7 @@
   import DeleteItem from './DeleteItem';
 
 export default {
-    props: ['groceryItem'],
+    props: ['todoItem'],
     data: function() {
         return {
            
@@ -24,12 +24,12 @@ export default {
     },
     computed: {
         statusText: function() {
-            return this.groceryItem.done ? 'Done' : 'Not done';
+            return this.todoItem.done ? 'Done' : 'Not done';
         }
     },
     methods: {
         toggle: function() {
-           this.groceryItem.done = !this.groceryItem.done;
+           this.todoItem.done = !this.todoItem.done;
         },
         onBackTap : function() {
             this.$navigateBack();
@@ -37,7 +37,7 @@ export default {
         onDeleteTap: function() {
             this.$showModal(DeleteItem).then( validate => {
                 if(validate) {
-                    this.groceryItem.deleted = true;
+                    this.todoItem.deleted = true;
                     this.$navigateBack();
                 }
             })
